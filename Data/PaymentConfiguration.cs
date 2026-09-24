@@ -23,3 +23,4 @@ public class PaymentConfiguration : IEntityTypeConfiguration<Payment>
         b.HasIndex(x => x.FineId).HasDatabaseName("IX_Payments_FineId");
     }
 }
+47
