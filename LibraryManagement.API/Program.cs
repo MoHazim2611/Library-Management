@@ -18,9 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// ---------------- Services ----------------
-builder.Services.AddScoped<IAuthService, AuthService>();
-
 // ---------------- JWT Authentication ----------------
 // Identity manages users/passwords; we still issue our own JWT after Identity validates credentials.
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
@@ -68,6 +65,7 @@ builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IPublisherRepository, PublisherRepository>();
 
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthorService, AuthorService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IPublisherService, PublisherService>();
